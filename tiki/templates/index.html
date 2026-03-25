@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiki Web Scraper</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f0f2f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .card {
+            margin: 60px auto;
+            max-width: 520px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 0 0 16px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            width: 130px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 12px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #667eea, #efecf3);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(0.95);
+        }
+
+        .notice {
+            margin-top: 14px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background: #fff8e1;
+            color: #816100;
+            border-left: 4px solid #ffd54f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1></h1>
+        <form method="POST">
+            <div class="row">
+                <label for="keyword">Từ khóa tìm kiếm:</label>
+                <input id="keyword" name="keyword" type="text" value="{{ keyword or '' }}" placeholder="Nhập từ khóa"
+                    required>
+            </div>
+            <button type="submit">Tìm</button>
+        </form>
+        {% if notice %}
+        <div class="notice">{{ notice }}</div>
+        {% endif %}
+        {% if products %}
+        <div class="notice">Tìm thấy {{ products|length }} sản phẩm</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
