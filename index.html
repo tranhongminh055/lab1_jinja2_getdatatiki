@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm Lazada</title>
+    <style>
+        /* CSS định dạng giao diện */
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .product { border: 1px solid #ddd; padding: 10px; margin: 10px; width: 200px; text-align: left; }
+        .product img { width: 100%; height: auto; }
+        .product h3 { font-size: 16px; margin: 5px 0; }
+        .product p { color: red; font-weight: bold; }
+        .product a { text-decoration: none; color: blue; font-size: 14px; }
+        .notice { color: orange; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Sản phẩm Lazada</h1>
+    {% if notice %}
+        <p class="notice">{{ notice }}</p>
+    {% endif %}
+    <!--Vòng lặp nhận dữ liệu từ Python-->
+    <!-- Đây là cú pháp Jinja2 Template của Flask: Python gửi products sang HTML; HTML dùng vòng lặp để hiển thị từng sản phẩm -->
+    <div class="container">
+    {% for product in products %}
+        <!-- Mỗi sản phẩm là 1 box -->
+        <div class="product">
+            <!-- Hiển thị ảnh sản phẩm -->
+            <img src="{{ product.img }}" alt="{{ product.title }}">
+            <!-- Hiển thị tên sản phẩm -->
+            <h3>{{ product.title }}</h3>
+            <!-- Hiển thị giá sản phẩm -->
+            <p>Giá: {{ product.price }}</p>
+            <!-- Gắn link tới sản phẩm thật trên Lazada -->
+            <a href="{{ product.link }}" target="_blank">Xem ngay</a>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

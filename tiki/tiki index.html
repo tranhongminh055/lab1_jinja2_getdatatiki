@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiki Search</title>
+  <style>
+    body{font-family:Arial;background:#f0f0f0;padding:20px}
+    .product{background:#fff;padding:10px;margin:10px;border:1px solid #ccc;}
+  </style>
+</head>
+<body>
+  <h1>Tìm sản phẩm trên Tiki</h1>
+  <form method="POST">
+    <input name="keyword" placeholder="Từ khóa">
+    <button type="submit">Tìm</button>
+  </form>
+  {% if products %}
+    {% for p in products %}
+      <div class="product">
+        <img src="{{p.img}}" width="100"><br>
+        {{p.title}} - {{p.price}}<br>
+        <a href="{{p.link}}">Xem</a>
+      </div>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>
